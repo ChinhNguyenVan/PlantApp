@@ -16,7 +16,7 @@ const { width, height } = Dimensions.get("window");
 
 export default class Welcome extends React.Component {
   static navigationOptions = {
-    header: null,
+    headerShown: false,
   };
 
   scrollX = new Animated.Value(0);
@@ -49,7 +49,7 @@ export default class Welcome extends React.Component {
           {
             nativeEvent: { contentOffset: { x: this.scrollX } },
           },
-        ])}
+        ],{useNativeDriver: false})}
       />
     );
   }

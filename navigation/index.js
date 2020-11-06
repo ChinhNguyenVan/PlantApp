@@ -6,7 +6,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import Welcome from "../screens/Welcome";
 import Login from "../screens/Login";
 import SignUp from "../screens/Signup";
-import Forgot from '../screens/Forgot';
+import Forgot from "../screens/Forgot";
 // import Explore from '../screens/Explore';
 // import Browse from '../screens/Browse';
 // import Product from '../screens/Product';
@@ -33,18 +33,20 @@ const screens = createStackNavigator(
         borderBottomColor: "transparent",
         elevation: 0, // for android only
       },
-      headerBackImage: <Image source={require('../assets/icons/back.png')} />,
+      headerBackImage: () => (
+        <Image source={require("../assets/icons/back.png")} />
+      ),
       headerBackTitle: null,
       headerLeftContainerStyle: {
-        alignItems: 'center',
-        marginLeft: theme.sizes.base * 2,    //for iOS multiply the value by 2
+        alignItems: "center",
+        marginLeft: theme.sizes.base * 2, //for iOS multiply the value by 2
         paddingRight: theme.sizes.base,
       },
       headerRightContainerStyle: {
-        alignItems: 'center',
+        alignItems: "center",
         paddingRight: theme.sizes.base,
       },
-    }
+    },
   }
 );
 

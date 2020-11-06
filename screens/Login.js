@@ -9,7 +9,7 @@ import {
 import { theme } from "../constants";
 import { Button, Block, Text, Input } from "../components";
 
-const VALID_EMAIL = "kriss@kriss.com";
+const VALID_EMAIL = "kriss @kriss.com";
 const VALID_PASSWORD = "12345";
 
 export default class Login extends React.Component {
@@ -27,23 +27,22 @@ export default class Login extends React.Component {
     const { email, password } = this.state;
     const errors = [];
     Keyboard.dismiss();
-    console.log(email);
-    setTimeout(()=>{
-      this.setState({ loading: true });
+    this.setState({ loading: true });
+    // check with backend API or with some static data
+    setTimeout(() => {
       if (email !== VALID_EMAIL) {
-        errors.push("invalid Email");
+        errors.push("email");
       }
       if (password !== VALID_PASSWORD) {
-        errors.push("invalid Password");
+        errors.push("password");
       }
-  
+
       this.setState({ errors, loading: false });
 
       if (!errors.length) {
         navigation.navigate("Browse");
       }
-    },2000);
-    
+    }, 1000);
   }
   render() {
     const { navigation } = this.props;
@@ -72,13 +71,16 @@ export default class Login extends React.Component {
               onChangeText={(text) => this.setState({ password: text })}
             />
             <Button gradient onPress={() => this.handleLogin()}>
-              {loading ?
-                <ActivityIndicator size="small" color="white" /> : 
-                <Text bold white center>Login</Text>
-              }
+              {loading ? (
+                <ActivityIndicator size="small" color="white" />
+              ) : (
+                <Text bold white center>
+                  Login
+                </Text>
+              )}
             </Button>
 
-            <TouchableOpacity onPress={() => navigation.navigate('Forgot')}>
+            <TouchableOpacity onPress={() => navigation.navigate("Forgot")}>
               <Text
                 gray
                 caption
