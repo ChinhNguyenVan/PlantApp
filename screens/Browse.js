@@ -39,7 +39,7 @@ export default class Browse extends React.Component {
           <Text h1 bold>
             Browse
           </Text>
-          <Button>
+          <Button onPress={() => navigation.navigate("Settings")}>
             <Image source={profile.avatar} style={styles.avatar} />
           </Button>
         </Block>
